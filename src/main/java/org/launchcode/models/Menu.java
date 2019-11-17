@@ -6,9 +6,8 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
-public class Category {
+public class Menu {
 
     @Id
     @GeneratedValue
@@ -18,21 +17,20 @@ public class Category {
     @Size(min=3, max=15)
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "category_id")
+    @ManyToMany
     private List<Cheese> cheeses = new ArrayList<>();
+
+    public void addItem(Cheese item) {
+        cheeses.add(item);
+    }
 
     public List<Cheese> getCheeses() {
         return cheeses;
     }
 
-    public void setCheeses(List<Cheese> cheeses) {
-        this.cheeses = cheeses;
-    }
+    public Menu() {};
 
-    public Category() {};
-
-    public Category(String name) {
+    public Menu(String name) {
         this.name = name;
     }
 

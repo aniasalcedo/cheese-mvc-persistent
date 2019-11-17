@@ -1,9 +1,13 @@
+
 package org.launchcode.models;
+
+
+import org.launchcode.models.data.CheeseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -37,12 +41,8 @@ public class Cheese {
 
     public Cheese() { }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public List<Menu> getMenus() {
+        return menus;
     }
 
     public int getId() {
@@ -63,5 +63,13 @@ public class Cheese {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
